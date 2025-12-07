@@ -1,0 +1,116 @@
+/* Для изменения цвета и удаления нижнего подчеркивания на ссылке в breadcrumbs */
+.breadcrumb-item a {
+    color: #4f39f6;
+    text-decoration: none;
+}
+
+/* Функция underline-center для анимированного подчеркивания при наведении на ссылку в navbar с изменением ее цвета и фона */
+.underline-center {
+  position: relative;
+  text-decoration: none; /* убираем подчеркивание на ссылке */
+  color: #6c757d;
+
+  /* меняем цвет текска и фона при наведении */
+  &:hover {
+    color: #4f39f6;
+    /* делает появление bg более плавным  */
+    transition: background-color 0.6s ease 0s;
+    background-color: #4f39f62d;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Запрет на выделение текста */
+.no-select {
+  user-select: none;
+}
+
+/* Настройка footer */
+footer {
+  background-color: #1e2939;
+
+  .separator {
+    height: 1px;
+    background-color: #364153;
+  }
+  .footer-text-color {
+    color: #99a1af
+  }
+}
+
+/* active page indicator */
+.nav-link.active {
+  color: #4f39f6 !important; /* принудительно уснанавливаем цвет, иначе не работает */
+  background-color: #4f39f62d;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #4f39f6;
+  }
+}
+
+/* Всплывающий фильтр при ширине экрана от md и меньше */
+.offcanvas-center {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 1em; /* Закругление углов */
+  overflow: hidden;    /* Чтобы внутренности не вылезали за края */
+}
+
+/* Устанавливаем цвет фона для сайта */
+body {
+  background-color: #f1f1f1;
+  padding-top: 58px; /* из-за того, что функция fixed-top в navbar закрепляющая navbar в верху как бы наслаевает его на body, то нужно орустить body на высоту navbar */
+}
+
+/* стиль для всех кнопок */
+.btn {
+  background-color: #4f39f6;
+  border: medium solid #4f39f6;
+  color: #efedf7;
+
+  &:hover {
+    border: medium solid #4f39f6;
+    color: #4f39f6;
+  }
+}
+
+/* over the footer */
+.block {
+  background-color: #4f39f6;
+  color: #efedf7;
+  border-radius: 1em;
+}
+
+/* Светлый цвет текста */
+.fc-light {
+  color: #efedf7;
+}
+
+
