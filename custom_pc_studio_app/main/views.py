@@ -3,13 +3,13 @@ from django.shortcuts import render # функция render для отрисо�
 
 def index(request):
     context = {
-        'title': 'Home',
-        'content': 'Main page',
-        'list': ['first', 'second'],
-        'dict': {'first': 1}, 
-        'is_authenticated': False
+        'title': 'CustomPC Studio - Главная'
     } # эти значения передаются с httpRequest
     return render(request, 'main/index.html', context) # request для отрисовки данных переданых с httpRequest; template_name - html-шаблон (.html) обычно все шаблоны хранятся в приложении к которому они относятся 
 
 def about(request):
-    return HttpResponse('About page')
+    context = {
+        'title': 'CustomPC Studio - О нас',
+        'text_on_page': 'Текст о том, почему наш магазин лучше всех других!!!'
+    }
+    return render(request, 'main/about.html', context)

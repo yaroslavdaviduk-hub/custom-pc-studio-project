@@ -15,12 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
-from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls), # маршрут админ-панели
-    path('', views.index, name='index'), # маршрут домашней (главной) страницы
-    path('about/', views.about, name='about'),
+    path('', include('main.urls', namespace='main')) # в начале в кавычках указывается домен приложения (например blog/ если приложение связано с блогом, news/ если с новостями, catalog/ для каталога и т.д.) В нашем случае там ничего нет, так как это главная страница и страницы которые нельзя выделить в отдельное приложение (типа страницы о нас about/) С помощю пространства имен namespace мы указываем к какому именно приложению относятся эти адреса когда мы обращаемся к ним в шаблонах
 ]
