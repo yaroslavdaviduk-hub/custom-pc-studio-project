@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'main',
-    
+    'goods',
 ]
 
 MIDDLEWARE = [
@@ -71,7 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'custom_pc_studio_app.wsgi.application'
-
+ 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
