@@ -34,13 +34,18 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # standart libraries
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party ibraries
+    "debug_toolbar",
     
+    # our libraries
     'main',
     'goods',
 ]
@@ -53,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'custom_pc_studio_app.urls'
@@ -124,7 +131,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/' # здесь static это не то где находятся статические файлы, а просто префикс к url адресу
 
-STATICFILES_DIRS = [BASE_DIR / 'static'] # определяем папку static в корне проекта. по этому пути django будет искать статические файлы 
+# определяем папку static в корне проекта. по этому пути django будет искать статические файлы 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+    ] 
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
