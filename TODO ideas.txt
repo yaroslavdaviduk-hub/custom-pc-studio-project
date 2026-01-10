@@ -1,0 +1,3 @@
+1. Instead of manually changing discount value in DB in admin pannel maybe it's possible to automate it via AI or something like this
+2. Whan an actuon on a webpage occured a toast should appear indicating and ensuring user that an action is complete
+3. When a specific page is selected i.e. Catalog, it should have colored bg and be underlined

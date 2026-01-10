@@ -1,0 +1,72 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 1,
+        "fields": {
+            "name": "CPS1 | Silver",
+            "slug": "cps1-silver",
+            "description": "Готовая сборка CPS1 | Silver\r\nГрафика: NVIDIA GeForce RTX 5060\r\nПроцессор: AMD Ryzen 5 9600X\r\nОЗУ: 16GB RGB DDR5\r\nНакопитель: 1TB T-Force A440 Gen4 SSD",
+            "image": "",
+            "price": "1499.00",
+            "discount": "0.00",
+            "quantity": 5,
+            "category": 22
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 2,
+        "fields": {
+            "name": "CPS1 | The Ascendant",
+            "slug": "cps1-the-ascendant",
+            "description": "Графика: NVIDIA GeForce RTX 5080\r\nПроцессор: AMD Ryzen 7 9800X3D\r\nОЗУ: 32GB RGB DDR5 6400MT/s\r\nНакопитель: 2TB Gen4 SSD",
+            "image": "",
+            "price": "2799.00",
+            "discount": "0.00",
+            "quantity": 5,
+            "category": 22
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "CPS1 | The Titan",
+            "slug": "cps1-the-titan",
+            "description": "Графика: NVIDIA GeForce RTX 5090\r\nПроцессор: AMD Ryzen 7 9800X3D\r\nОЗУ: 32GB RGB DDR5 6400MT/s\r\nНакопитель: 2TB Gen4 SSD",
+            "image": "",
+            "price": "4799.00",
+            "discount": "0.00",
+            "quantity": 5,
+            "category": 22
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "CPS1 | The Underdog",
+            "slug": "cps1-the-underdog",
+            "description": "Графика: NVIDIA GeForce RTX 5070\r\nПроцессор: AMD Ryzen 7 7800X3D\r\nОЗУ: 32GB RGB DDR5 6400MT/s\r\nНакопитель: 2TB Gen4 SSD",
+            "image": "",
+            "price": "1999.00",
+            "discount": "0.00",
+            "quantity": 5,
+            "category": 22
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 5,
+        "fields": {
+            "name": "CPS1 | The Wilding",
+            "slug": "cps1-the-wilding",
+            "description": "Графика: NVIDIA GeForce RTX 5060 Ti\r\nПроцессор: AMD Ryzen 5 9600X\r\nОЗУ: 16GB RGB DDR5 6400MT/s\r\nНакопитель: 1TB Gen4 SSD",
+            "image": "",
+            "price": "1699.00",
+            "discount": "0.00",
+            "quantity": 5,
+            "category": 22
+        }
+    }
+]

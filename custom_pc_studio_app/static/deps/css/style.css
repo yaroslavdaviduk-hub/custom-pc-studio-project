@@ -114,3 +114,93 @@ body {
 }
 
 
+
+
+
+
+
+
+
+
+/* navbar всегда сверху */
+.navbar {
+  z-index: 1100;
+}
+
+/* collapse ВЫВЕДЕН ИЗ ПОТОКА */
+#hoverCollapse {
+  position: fixed !important;
+  top: var(--navbar-height, 58px);
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: block !important;          /* важно */
+  height: auto !important;            /* убираем bootstrap-height */
+  pointer-events: none;
+}
+
+/* управляем видимостью, а не layout */
+#hoverCollapse:not(.show) {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+#hoverCollapse.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.collapse-inner {
+  background: #fff;
+  box-shadow: 0 20px 40px rgba(0,0,0,.15);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+/* FLEX */
+.menu-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* пункты */
+.menu-item {
+  text-decoration: none;
+  font-weight: 500;
+  color: #000;
+  position: relative;
+  white-space: nowrap;
+}
+
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width .2s ease;
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* OVERLAY */
+/* #overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 900;
+} */
+
+
+/* body.menu-open #overlay {
+  opacity: 1;
+  pointer-events: auto;
+} */

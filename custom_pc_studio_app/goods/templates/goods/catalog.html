@@ -6,15 +6,15 @@
     <div class="container my-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item no-select"><a href="../../index.html">Главная</a></li>
-                <li class="breadcrumb-item no-select active" aria-current="page">Готовые сборки</li>
+                <li class="breadcrumb-item no-select"><a href="{% url "main:index" %}">Главная</a></li>
+                <li class="breadcrumb-item no-select active" aria-current="page">Каталог</li>
             </ol>
         </nav>
     </div>
 
     <!-- Title -->
-    <div class="container my-5">
-        <p class="display-4 no-select">Готовые сборки</p>
+    <div class="container my-5">    
+        <p class="display-4 no-select">Каталог товаров</p>
     </div>
 
     <!-- Контейнер для фильтра и карточек товаров -->
@@ -173,94 +173,25 @@
                 <!-- Карты товаров -->
                 <div class="row g-3">
 
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
+                    {% for product in goods %}
+                    
+                        <!-- Карта товара -->
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="card m-auto">
+                                <img src="{% static product.image %}" class="card-img-top" alt="card-img">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.graphics }}</p>
+                                    <p class="card-text">{{ product.processor }}</p>
+                                    <p class="card-text">{{ product.memory }}</p>
+                                    <p class="card-text">{{ product.storadge }}</p>
+                                    <a href="#" class="btn">Подробнее</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Карта товара -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card m-auto">
-                            <img src="{% static "deps/images/PC-image-test.webp" %}" class="card-img-top" alt="card-img">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                <a href="#" class="btn">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    {% endfor %}
+
                     
                 </div>
                     

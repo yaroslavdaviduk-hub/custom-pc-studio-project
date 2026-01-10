@@ -1,0 +1,83 @@
+[
+    {
+        "model": "goods.categories",
+        "pk": 14,
+        "fields": {
+            "name": "Комплектующие",
+            "slug": "komplektuyushie",
+            "parent": null
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 15,
+        "fields": {
+            "name": "Процессоры",
+            "slug": "processory",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 16,
+        "fields": {
+            "name": "Видеокарты",
+            "slug": "videokarty",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 17,
+        "fields": {
+            "name": "Материнские платы",
+            "slug": "materinskie-platy",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 18,
+        "fields": {
+            "name": "Оперативная память",
+            "slug": "operativnaya-pamyat",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 19,
+        "fields": {
+            "name": "Накопители",
+            "slug": "nakopiteli",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 20,
+        "fields": {
+            "name": "Корпуса",
+            "slug": "korpusa",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 21,
+        "fields": {
+            "name": "Блоки питания",
+            "slug": "bloki-pitaniya",
+            "parent": 14
+        }
+    },
+    {
+        "model": "goods.categories",
+        "pk": 22,
+        "fields": {
+            "name": "Готовые сборки",
+            "slug": "gotovye-sborki",
+            "parent": null
+        }
+    }
+]
