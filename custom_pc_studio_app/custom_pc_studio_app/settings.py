@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import LANGUAGE_CODE
+from django.conf.global_settings import LANGUAGE_CODE, MEDIA_ROOT, MEDIA_URL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR это переменная которая видет нас к корневому каталогу нашего проекта (custom_pc_studio_app)
@@ -129,12 +129,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/' # здесь static это не то где находятся статические файлы, а просто префикс к url адресу
+# здесь static это не то где находятся статические файлы, а просто префикс к url адресу
+STATIC_URL = 'static/' 
 
 # определяем папку static в корне проекта. по этому пути django будет искать статические файлы 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
     ] 
+
+# media/ это не название папки, а название URL префикса
+MEDIA_URL = 'media/'
+
+# там где django ищет медиа файлы
+MEDIA_ROOT = BASE_DIR / 'media'
 
 INTERNAL_IPS = [
     '127.0.0.1',

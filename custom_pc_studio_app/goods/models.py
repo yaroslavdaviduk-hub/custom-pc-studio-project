@@ -48,3 +48,14 @@ class Products(models.Model):
 
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}'
+    
+    def display_id(self):
+        # здесь 05 означает что строка с id будет добавлять нули с левой стороны до того момента пока id не будет пятисимвольным
+        return f'{self.id:05}'
+    
+    # метод высчитывающий ту цену по которой товар будет продан клиенту (с или без учета скидки)
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - self.price*self.discount/100, 2)
+        
+        return self.price

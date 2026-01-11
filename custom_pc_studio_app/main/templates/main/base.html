@@ -1,4 +1,5 @@
 {% load static %} <!-- подгрузка пути расположения статики -->
+{% load goods_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +56,7 @@
                 <div class="container py-4">
                 <!-- FLEX-МЕНЮ -->
                     <div class="menu-flex">
+                        {% tag_categories as categories %}
                         {% for category in categories %}
                             <a href="{% url "catalog:index" %}" class="menu-item">{{ category.name }}</a>
                         {% endfor %}

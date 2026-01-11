@@ -178,13 +178,26 @@
                         <!-- Карта товара -->
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="card m-auto">
-                                <img src="{% static product.image %}" class="card-img-top" alt="card-img">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static "deps/images/image not found.jpg" %}" class="card-img-top" alt="image-not-found-not-found">
+                                {% endif %}
                                 <div class="card-body">
                                     <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">{{ product.graphics }}</p>
-                                    <p class="card-text">{{ product.processor }}</p>
-                                    <p class="card-text">{{ product.memory }}</p>
-                                    <p class="card-text">{{ product.storadge }}</p>
+                                    <p class="card-text">{{ product.description }}</p> 
+                                    <p class="product_id">id: {{ product.display_id }}</p>
+                                    
+                                    {% if product.discount %}
+                                        <p><s>{{ product.price }}</s></p>
+                                        <p><strong>{{ product.sell_price }}</strong></p>
+                                        <span class='badge bg-warning text-dark'>Скидка {{ product.discount }} %</span>
+                                    {% else %}
+                                        <p class="card-text"><strong>{{ product.sell_price }}</strong></p>
+                                    {% endif %}
+
+
+
                                     <a href="#" class="btn">Подробнее</a>
                                 </div>
                             </div>

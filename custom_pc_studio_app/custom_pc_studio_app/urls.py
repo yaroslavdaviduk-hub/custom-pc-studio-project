@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls.static import static
 
-from custom_pc_studio_app.settings import DEBUG
-
+from custom_pc_studio_app import settings
 
 
 urlpatterns = [
@@ -29,7 +29,9 @@ urlpatterns = [
 ]
 
 # этот URL маршрут будет сюда подключен только в DEBUG режиме
-if DEBUG:
+if settings.DEBUG:
     urlpatterns += [
         path('__debug__/', include('debug_toolbar.urls')),
+
     ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
