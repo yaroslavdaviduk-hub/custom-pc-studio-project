@@ -1,3 +1,4 @@
+# контроллеры
 from django.shortcuts import render
 from django.template import context
 
@@ -14,8 +15,14 @@ def catalog(request): # запрос каталога
     }
     return render(request, 'goods/catalog.html', context)
 
-def product(request): # запрос подробной информации о товаре
+def product(request, product_slug): # запрос подробной информации о товаре
+    
+    product = Products.objects.get(slug=product_slug)
+    
     context = {
-        'title': 'CustomPC Studio - Продукт'
+        'title': 'CustomPC Studio - Продукт',
+        'product': product,
     }
-    return render(request, 'goods/product.html', context)
+
+
+    return render(request, 'goods/product.html', context=context)
