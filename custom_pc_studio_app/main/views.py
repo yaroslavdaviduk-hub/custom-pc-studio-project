@@ -18,3 +18,4 @@ def about(request):
         'text_on_page': 'Текст о том, почему наш магазин лучше всех других!!!'
     }
     return render(request, 'main/about.html', context)
+

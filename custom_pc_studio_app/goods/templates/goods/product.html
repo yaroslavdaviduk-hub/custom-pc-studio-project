@@ -7,11 +7,14 @@
     <div class="container my-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item no-select"><a href="{% url "main:index" %}">Главная</a></li>
+                {% comment %} <li class="breadcrumb-item no-select"><a href="{% url "main:index" %}">Главная</a></li>
                 <li class="breadcrumb-item no-select"><a href="{% url "goods:index" %}">Каталог</a></li>
-                <li class="breadcrumb-item no-select active" aria-current="page">{{ product.name }}</li>
+                <li class="breadcrumb-item no-select active" aria-current="page">{{ product.name }}</li> {% endcomment %}
             </ol>
         </nav>
     </div>
 
 {% endblock section_content %}
+
+
+{% comment %} этот шаблон для подробной информации о товаре {% endcomment %}

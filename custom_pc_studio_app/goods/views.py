@@ -1,19 +1,26 @@
 # контроллеры
-from django.shortcuts import render
+from unicodedata import category
+from django.shortcuts import get_list_or_404, render 
 from django.template import context
 
 from goods.models import Products
 
-def catalog(request): # запрос каталога
-
+def catalog(request, category_slug): # запрос каталога
+    
     # Получаем информацию из БД
-    goods = Products.objects.all()
+    if category_slug == 'komplektuyushie':
+        goods = Products.objects.exclude(category=22)
+    else:
+        goods = get_list_or_404(Products.objects.filter(category__slug=category_slug))
 
     context = {
         "title": "CustomPC Studio - Каталог",
         "goods": goods,
     }
     return render(request, 'goods/catalog.html', context)
+
+
+
 
 def product(request, product_slug): # запрос подробной информации о товаре
     
@@ -26,3 +33,5 @@ def product(request, product_slug): # запрос подробной инфор
 
 
     return render(request, 'goods/product.html', context=context)
+
+

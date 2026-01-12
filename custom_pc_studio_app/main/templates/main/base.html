@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="{% static "deps/bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static "deps/css/style.css" %}">
+    
     <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/apple-touch-icon.png" %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "deps/favicon/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "deps/favicon/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "deps/favicon/site.webmanifest" %}">
+    {% comment %} 
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/from-favicon.io/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "deps/favicon/from-favicon.io/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "deps/favicon/from-favicon.io/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "deps/favicon/from-favicon.io/site.webmanifest" %}"> 
+    {% endcomment %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/my-favicon/favicon-309x333.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "deps/favicon/my-favicon/favicon-229x248.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "deps/favicon/my-favicon/favicon-106x114.png" %}">
+
+
 
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -30,13 +39,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
                         <li class="nav-item">
-                            <a class="nav-link underline-center" href="{% url "catalog:index" %}" id="menuHover">Каталог</a>
+                            <a class="nav-link underline-center" href="#">Готовые ПК</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link underline-center" href="source/pages/custom-assembly.html">Индивидуальная сборка</a>
+                            <a class="nav-link underline-center" href="{% url "catalog:index" category_slug='komplektuyushie' %}" id="menuHover">Каталог</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link underline-center" href="{% url "main:about" %}">О нас</a>
+                            <a class="nav-link underline-center" href="#">Собрать ПК</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline-center" href="#">Услуги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline-center" href="#">Поддержка</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link underline-center" href="{% url "main:about" %}">Компания</a>
                         </li>
                     </ul>
                     
@@ -58,7 +76,9 @@
                     <div class="menu-flex">
                         {% tag_categories as categories %}
                         {% for category in categories %}
-                            <a href="{% url "catalog:index" %}" class="menu-item">{{ category.name }}</a>
+                        {% if category.parent_id != NULL %}
+                            <a href="{% url "catalog:index" category.slug %}" class="menu-item">{{ category.name }}</a>
+                        {% endif %}
                         {% endfor %}
                     </div>
 
