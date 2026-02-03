@@ -48,7 +48,7 @@
                             <a class="nav-link underline-center" href="#">Собрать ПК</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link underline-center" href="#">Услуги</a>
+                            <a class="nav-link underline-center" href="#">Модернизация</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link underline-center" href="#">Поддержка</a>
@@ -59,15 +59,64 @@
                     </ul>
                     
                     <!-- button group to the right -->
-                    <div class="btn-group nav-btn-size" role="group">                       
-                        <a href="#"><i class="bi bi-search fs-4 underline-center p-2"></i></a>
-                        <a href="#"><i class="bi bi-person-circle fs-4 underline-center p-2"></i></a>
+                    <div class="btn-group nav-btn-size" role="group">  
+                        {% comment %} <form class="d-flex" role="search" action="{% url "catalog:search" %}" method="get">
+                            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search"/>
+                            <button class="btn btn-outline-success" type="submit">Поиск</button>
+                        </form>                      {% endcomment %}
+                        {% comment %} <a href="#"><i class="bi bi-search fs-4 underline-center p-2"></i></a> {% endcomment %}
+                        
+                        {% comment %} Profile button {% endcomment %}
+                        <div class="dropdown profile-dropdown">
+
+                            <span class="profile-trigger d-flex align-items-center">
+                                <i class="bi bi-person-circle fs-4 underline-center p-2"></i>
+                            </span>
+
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                                {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'profile' %}">
+                                    Личный кабинет
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="{% url 'users:logout' %}">
+                                    Выйти
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'users:registration' %}">
+                                    Регистрация
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'users:login' %}">
+                                    Войти
+                                    </a>
+                                </li>
+                                {% endif %}
+
+                                </ul>
+                            </div>
+                                                    
+                        
+                        
+                        
                         <a href="#"><i class="bi bi-cart3 fs-4 underline-center p-2"></i></a>
                     </div>
                 </div>
             </div>
         </nav>
         
+
+
+        <!-- ================================== -->
+        <!-- OVERLAY -->
+        <div id="overlay"></div>
+
         <!-- COLLAPSE -->
         <div id="hoverCollapse" class="collapse">
             <div class="collapse-inner">
@@ -86,6 +135,14 @@
             </div>
         </div>
 
+        <!-- ================================== -->
+
+
+
+
+
+
+
     </header>
 
 
@@ -93,7 +150,6 @@
 
         <!-- HERO section -->
         {% block section_content %}{% endblock section_content %}
-
 
     </section>
 

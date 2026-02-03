@@ -122,85 +122,122 @@ body {
 
 
 
-/* navbar всегда сверху */
+/* navbar */
 .navbar {
   z-index: 1100;
 }
 
-/* collapse ВЫВЕДЕН ИЗ ПОТОКА */
+/* collapse вне потока */
 #hoverCollapse {
   position: fixed !important;
   top: var(--navbar-height, 58px);
   left: 0;
   width: 100%;
   z-index: 1000;
-  display: block !important;          /* важно */
-  height: auto !important;            /* убираем bootstrap-height */
+  display: block !important;
+  height: auto !important;
   pointer-events: none;
 }
 
-/* управляем видимостью, а не layout */
-#hoverCollapse:not(.show) {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-#hoverCollapse.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
+/* анимация делается ТОЛЬКО на inner */
 .collapse-inner {
   background: #fff;
   box-shadow: 0 20px 40px rgba(0,0,0,.15);
-  transition: opacity .25s ease, transform .25s ease;
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  transition:
+    transform 140ms ease-out,
+    opacity 140ms ease-out;
 }
 
-/* FLEX */
+/* OPEN — сверху вниз */
+#hoverCollapse.show .collapse-inner {
+  transform: scaleY(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* CLOSE — снизу вверх */
+#hoverCollapse.collapsing .collapse-inner {
+  transform-origin: bottom;
+}
+
+/* flex */
 .menu-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* пункты */
 .menu-item {
   text-decoration: none;
   font-weight: 500;
-  color: #000;
-  position: relative;
-  white-space: nowrap;
+  color: #000000;
 }
 
-.menu-item::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: currentColor;
-  transition: width .2s ease;
-}
-
-.menu-item:hover::after {
-  width: 100%;
-}
-
-/* OVERLAY */
-/* #overlay {
+/* overlay */
+#overlay {
   position: fixed;
   inset: 0;
   background: rgba(255,255,255,.4);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s ease;
+  transition: opacity 140ms ease-out;
   z-index: 900;
-} */
+}
 
+/* blur */
+body.menu-open section,
+body.menu-open footer {
+  filter: blur(5px);
+  transition: filter 140ms ease-out;
+}
 
-/* body.menu-open #overlay {
+body.menu-open #overlay {
   opacity: 1;
   pointer-events: auto;
-} */
+}
+
+
+/* для регистрации */
+/* затемнение + blur */
+.modal-backdrop.show {
+  opacity: 0.6;
+  backdrop-filter: blur(6px);
+}
+/* сама карточка */
+.modal-content {
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.2);
+}
+
+
+
+/* для dropdown личный кабинет */
+.profile-dropdown {
+  position: relative;
+}
+.profile-dropdown:hover > .dropdown-menu {
+  display: block;
+}
+.profile-trigger {
+  cursor: default;
+  pointer-events: none;
+}
+.profile-dropdown .dropdown-menu {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 120ms ease, transform 120ms ease;
+  display: block;
+  pointer-events: none;
+}
+.profile-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-item:active {
+  background-color: #4f39f6; /* любой нужный цвет */
+  color: #fff;
+}
