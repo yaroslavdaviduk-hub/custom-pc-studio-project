@@ -77,7 +77,7 @@
 
                                 {% if user.is_authenticated %}
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'profile' %}">
+                                    <a class="dropdown-item" href="{% url 'users:profile' %}">
                                     Личный кабинет
                                     </a>
                                 </li>
@@ -149,6 +149,7 @@
     <section>
 
         <!-- HERO section -->
+         {% include "includes/notifications.html" %}
         {% block section_content %}{% endblock section_content %}
 
     </section>
