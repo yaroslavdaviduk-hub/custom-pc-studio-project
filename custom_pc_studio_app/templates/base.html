@@ -78,23 +78,28 @@
                                 {% if user.is_authenticated %}
                                 <li>
                                     <a class="dropdown-item" href="{% url 'users:profile' %}">
-                                    Личный кабинет
+                                        Личный кабинет
                                     </a>
                                 </li>
+                                    {% if user.is_admin or user.is_staff %}
+                                        <a class="dropdown-item" href="{% url 'admin:index' %}">
+                                            Админ панель
+                                        </a>
+                                    {% endif %}
                                 <li>
                                     <a class="dropdown-item text-danger" href="{% url 'users:logout' %}">
-                                    Выйти
+                                        Выйти
                                     </a>
                                 </li>
                                 {% else %}
                                 <li>
                                     <a class="dropdown-item" href="{% url 'users:registration' %}">
-                                    Регистрация
+                                        Регистрация
                                     </a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{% url 'users:login' %}">
-                                    Войти
+                                        Войти
                                     </a>
                                 </li>
                                 {% endif %}
@@ -149,7 +154,7 @@
     <section>
 
         <!-- HERO section -->
-         {% include "includes/notifications.html" %}
+        {% include "includes/notifications.html" %}
         {% block section_content %}{% endblock section_content %}
 
     </section>
