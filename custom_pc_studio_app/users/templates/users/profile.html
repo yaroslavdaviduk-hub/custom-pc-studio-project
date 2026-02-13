@@ -3,6 +3,190 @@
 
 {% block section_content %}
 
+<div class="container my-4">
+
+    <!-- breadcrumb -->
+    <div class="container my-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item no-select"><a href="{% url "main:index" %}">Главная</a></li>
+                <li class="breadcrumb-item no-select active" aria-current="page">Личный кабинет</li>
+            </ol>
+        </nav>
+    </div>
+
+  <div class="container mt-4">
+
+    <div class="row">
+
+        <!-- ЛЕВОЕ МЕНЮ -->
+        <div class="col-3">
+
+            <div class="nav flex-column nav-pills" id="profile-tabs" role="tablist">
+
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#profile">
+                    Профиль
+                </button>
+
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#cart">
+                    Корзина
+                </button>
+
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#orders">
+                    Заказы
+                </button>
+
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#configs">
+                    Конфигурации
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- КОНТЕНТ -->
+        <div class="col-9">
+
+            <div class="tab-content">
+
+                <!-- ПРОФИЛЬ -->
+                <div class="tab-pane fade show active" id="profile">
+
+                    <h4>Профиль</h4>
+
+                    <form action={% url "users:profile" %} method="post">
+                        
+                        {% csrf_token %}
+                                                
+                        <!-- Имя -->
+                        <div class="mb-3">
+                            <label for='id_first_name' class="form-label">Имя</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="id_first_name" 
+                                name="first_name" 
+                                value="{{ form.first_name.value }}" 
+                                placeholder="Введите ваше имя" 
+                                required>
+                            {% if form.first_name.errors %}
+                                <div class='alert alert-danger alert-dismissible fade show'>{{ form.first_name.errors}}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Фамилия -->
+                        <div class="mb-3">
+                            <label for='id_last_name' class="form-label">Фамилия</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="id_last_name" 
+                                name="last_name" 
+                                value="{{ form.last_name.value }}" 
+                                placeholder="Введите вашу фамилию" 
+                                required>
+                            {% if form.last_name.errors %}
+                                <div class='alert alert-danger alert-dismissible fade show'>{{ form.last_name.errors}}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Имя пользователя -->
+                        <div class="mb-3">
+                            <label for='id_username' class="form-label">Имя пользователя</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="id_username" 
+                                name="username" 
+                                value="{{ form.username.value }}"
+                                placeholder="Введите ваше имя пользователя" 
+                                required>
+                            {% if form.username.errors %}
+                                <div class='alert alert-danger alert-dismissible fade show'>{{ form.username.errors}}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for='id_email' class="form-label">Email</label>
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="id_email" 
+                                name="email" 
+                                value="{{ form.email.value }}"
+                                placeholder="Введите ваш email" 
+                                required>
+                            {% if form.email.errors %}
+                                <div class='alert alert-danger alert-dismissible fade show'>{{ form.email.errors}}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Адрес доставки -->
+                        <div class="mb-3">
+                            <label for='id_delivery_address' class="form-label">Адрес доставки</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="id_delivery_address" 
+                                name="delivery_address" 
+                                value="{{ form.delivery_address.value }}"
+                                placeholder="Введите ваш адрес доставки" 
+                                required>
+                        </div>
+
+                        
+
+                        <button class="btn btn-dark">
+                            Обновить информацию
+                        </button>
+                    </form>
+
+                </div>
+
+                <!-- КОРЗИНА -->
+                <div class="tab-pane fade" id="cart">
+
+                    <h4>Корзина</h4>
+
+                    {% for item in cart_items %}
+                        <div>{{ item.product.name }} — {{ item.quantity }}</div>
+                    {% empty %}
+                        Корзина пуста
+                    {% endfor %}
+
+                </div>
+
+                <!-- ЗАКАЗЫ -->
+                <div class="tab-pane fade" id="orders">
+
+                    <h4>Заказы</h4>
+
+                    {% for order in orders %}
+                        <div>
+                            Заказ №{{ order.id }} — {{ order.created_at }}
+                        </div>
+                    {% empty %}
+                        Нет заказов
+                    {% endfor %}
+
+                </div>
+
+                <!-- КОНФИГУРАЦИИ -->
+                <div class="tab-pane fade" id="configs">
+
+                    <h4>Конфигурации</h4>
+                    Пока пусто
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 {% endblock section_content %}
