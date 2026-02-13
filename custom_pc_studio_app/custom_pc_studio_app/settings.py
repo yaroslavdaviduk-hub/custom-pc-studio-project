@@ -157,5 +157,5 @@ INTERNAL_IPS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' # для БД. автоматически создает поле id с автоинкементом
 AUTH_USER_MODEL = 'users.User'
-
+LOGIN_URL = '/user/login/'
  
