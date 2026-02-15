@@ -110,7 +110,10 @@
                         
                         
                         
-                        <a href="#"><i class="bi bi-cart3 fs-4 underline-center p-2"></i></a>
+                        <a href="{% url "user:users-cart" %}"><i class="bi bi-cart3 fs-4 underline-center p-2"></i></a>
+                        
+                        {% comment %} {% include "carts/includes/included_cart.html" %} {% endcomment %}
+
                     </div>
                 </div>
             </div>

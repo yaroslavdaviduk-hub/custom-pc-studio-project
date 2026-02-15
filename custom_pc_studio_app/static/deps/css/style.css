@@ -259,3 +259,13 @@ body.menu-open #overlay {
     z-index: 2;
     border-radius: 4px;
 }
+
+
+
+/* корзина */
+.cart-dropdown:hover .dropdown-menu {
+    display: block;
+}
+.cart-preview {
+    width: 300px;
+}

@@ -148,12 +148,17 @@
                 <div class="tab-pane fade" id="cart">
 
                     <h4>Корзина</h4>
+                    
+                    {% include "carts/includes/included_cart.html" %}
+                    <a class="btn btn-dark" href="../orders/create_order.html">
+                        Оформить заказ
+                    </a>
 
-                    {% for item in cart_items %}
+                    {% comment %} {% for item in cart_items %}
                         <div>{{ item.product.name }} — {{ item.quantity }}</div>
                     {% empty %}
                         Корзина пуста
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
 
                 </div>
 
