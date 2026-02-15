@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
+{% load carts_tags %}
 
 {% block section_content %}
+
+{% user_carts request as carts %}
 
 <div class="container my-4">
 
@@ -22,21 +25,21 @@
         <!-- ЛЕВОЕ МЕНЮ -->
         <div class="col-3">
 
-            <div class="nav flex-column nav-pills" id="profile-tabs" role="tablist">
+            <div class="nav flex-column" id="profile-tabs" role="tablist">
 
-                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#profile">
+                <button class="nav-link underline-center active" data-bs-toggle="pill" data-bs-target="#profile">
                     Профиль
                 </button>
 
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#cart">
+                <button class="nav-link underline-center" data-bs-toggle="pill" data-bs-target="#cart">
                     Корзина
                 </button>
 
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#orders">
+                <button class="nav-link underline-center" data-bs-toggle="pill" data-bs-target="#orders">
                     Заказы
                 </button>
 
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#configs">
+                <button class="nav-link underline-center" data-bs-toggle="pill" data-bs-target="#configs">
                     Конфигурации
                 </button>
 
@@ -149,16 +152,17 @@
 
                     <h4>Корзина</h4>
                     
-                    {% include "carts/includes/included_cart.html" %}
-                    <a class="btn btn-dark" href="../orders/create_order.html">
-                        Оформить заказ
-                    </a>
-
-                    {% comment %} {% for item in cart_items %}
-                        <div>{{ item.product.name }} — {{ item.quantity }}</div>
-                    {% empty %}
-                        Корзина пуста
-                    {% endfor %} {% endcomment %}
+                        {% if carts %}
+                            {% include "carts/includes/included_cart.html" %}
+                            <a class="btn btn-dark" href="../orders/create_order.html">
+                                Оформить заказ
+                            </a>
+                        {% else %}
+                            <div class="container">
+                                Корзина пуста
+                            </div>
+                        {% endif %}
+                    
 
                 </div>
 

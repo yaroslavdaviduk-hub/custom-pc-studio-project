@@ -71,6 +71,10 @@ footer {
   }
 }
 
+.nav-link.passive {
+  color: #6c757d !important;
+}
+
 /* Всплывающий фильтр при ширине экрана от md и меньше */
 .offcanvas-center {
   top: 50% !important;
@@ -261,11 +265,3 @@ body.menu-open #overlay {
 }
 
 
-
-/* корзина */
-.cart-dropdown:hover .dropdown-menu {
-    display: block;
-}
-.cart-preview {
-    width: 300px;
-}
