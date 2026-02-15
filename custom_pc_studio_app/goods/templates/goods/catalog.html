@@ -263,7 +263,8 @@
                                             <button class="btn btn-light">-</button>
                                             <span>1</span>
                                             <button class="btn btn-light">+</button>
-                                            <button class="btn btn-outline-dark">В корзину</button>
+                                            {% comment %} <button class="btn btn-outline-dark">В корзину</button> {% endcomment %}
+                                            <a class="btn btn-dark" href="{% url "cart:cart_add" product.slug %}">В корзину</a>
                                         </div>
 
                                     </div>
